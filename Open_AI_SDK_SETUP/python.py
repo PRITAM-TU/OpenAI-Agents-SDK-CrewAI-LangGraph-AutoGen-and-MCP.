@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv,find_dotenv
 from openai import OpenAI
+from IPython.display import Markdown,display
 
 load_dotenv(find_dotenv())
 
@@ -12,15 +13,17 @@ client = OpenAI(
 
 
 response = client.chat.completions.create(
-    model="deepseek/deepseek-v4.1-flash",
+    model="anthropic/claude-sonnet-4.6",
     messages=[
-        {"role": "user", "content":"Build the profesonal protfolio with design and responsiveness alos and write production level code"}
+        {"role": "user", "content":"Tell me about the cat?"}
     ],
-    max_completion_tokens=50000,
+    max_completion_tokens=500,
+    reasoning_effort="high",
     extra_headers={
         "HTTP-Referer": "https://your-site.com",
         "X-Title": "Game"
     }
 )
 
-print(response.choices[0].message.content)
+ans=response.choices[0].message.content
+print(ans)
