@@ -13,7 +13,7 @@ client = OpenAI(
 
 
 response = client.chat.completions.create(
-    model="anthropic/claude-sonnet-4.6",
+    model="deepseek/deepseek-r1",
     messages=[
         {"role": "user", "content":"Tell me about the cat?"}
     ],
