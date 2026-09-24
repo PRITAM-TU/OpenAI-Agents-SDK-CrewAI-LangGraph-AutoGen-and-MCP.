@@ -1,0 +1,12 @@
+
+    digraph G {
+        graph [splines=true];
+        node [fontname="Arial"];
+        edge [penwidth=1.5];
+    "__start__" [label="__start__", shape=ellipse, style=filled, fillcolor=lightblue, width=0.5, height=0.3];"__end__" [label="__end__", shape=ellipse, style=filled, fillcolor=lightblue, width=0.5, height=0.3];"Sales Manager" [label="Sales Manager", shape=box, style=filled, fillcolor=lightyellow, width=1.5, height=0.8];"sales_email_writer_1" [label="sales_email_writer_1", shape=ellipse, style=filled, fillcolor=lightgreen, width=0.5, height=0.3];"sales_email_writer_2" [label="sales_email_writer_2", shape=ellipse, style=filled, fillcolor=lightgreen, width=0.5, height=0.3];"sales_email_writer_3" [label="sales_email_writer_3", shape=ellipse, style=filled, fillcolor=lightgreen, width=0.5, height=0.3];"__start__" -> "Sales Manager";
+        "Sales Manager" -> "sales_email_writer_1" [style=dotted, penwidth=1.5];
+        "sales_email_writer_1" -> "Sales Manager" [style=dotted, penwidth=1.5];
+        "Sales Manager" -> "sales_email_writer_2" [style=dotted, penwidth=1.5];
+        "sales_email_writer_2" -> "Sales Manager" [style=dotted, penwidth=1.5];
+        "Sales Manager" -> "sales_email_writer_3" [style=dotted, penwidth=1.5];
+        "sales_email_writer_3" -> "Sales Manager" [style=dotted, penwidth=1.5];"Sales Manager" -> "__end__";}
