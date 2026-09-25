@@ -19,7 +19,6 @@ software_architect:
     identify risks, choose pragmatic patterns, and produce implementation-ready
     designs that a development team can execute.
   llm: groq/openai/gpt-oss-120b
-
 senior_developer:
   role: >
     Senior Software Developer for {project_name}
@@ -41,7 +40,6 @@ security_engineer:
     boundaries, authentication, authorization, data handling, dependencies,
     abuse cases, and operational secrets, then give developers practical fixes.
   llm: groq/openai/gpt-oss-120b
-
 qa_engineer:
   role: >
     Senior QA Engineer for {project_name}
@@ -52,7 +50,6 @@ qa_engineer:
     You check acceptance criteria, failure paths, security concerns, and
     maintainability, then provide actionable fixes and regression tests.
   llm: groq/openai/gpt-oss-120b
-
 devops_engineer:
   role: >
     DevOps and Release Engineer for {project_name}
@@ -63,7 +60,6 @@ devops_engineer:
     checks, configuration management, logging, metrics, and rollback plans.
     You optimize for safe releases and simple operations.
   llm: groq/openai/gpt-oss-120b
-
 maintenance_engineer:
   role: >
     Site Reliability and Maintenance Engineer for {project_name}
