@@ -1,0 +1,119 @@
+requirements_task:
+  description: >
+    Analyze the product request:
+    {project_request}
+
+    Define the target users, business goals, user stories, functional and
+    non-functional requirements, scope boundaries, priorities, assumptions,
+    dependencies, and measurable acceptance criteria. Resolve ambiguity by
+    documenting reasonable assumptions.
+  expected_output: >
+    A prioritized product requirements document in markdown with user stories,
+    acceptance criteria, constraints, risks, and an explicit definition of done.
+  agent: product_owner
+  output_file: output/requirements.md
+
+architecture_task:
+  description: >
+    Use the product requirements and original request to design the system.
+    Original request:
+    {project_request}
+
+    Define the actors, user flow, functional requirements, non-functional
+    requirements, data model, API or module boundaries, technology choices,
+    acceptance criteria, and implementation risks. Keep the design practical
+    for a small team and call out any assumptions.
+  expected_output: >
+    An implementation-ready technical design in markdown with sections for
+    requirements, architecture, data flow, interfaces, acceptance criteria,
+    and risks. Trace every major design decision to a requirement.
+  agent: software_architect
+  context:
+    - requirements_task
+  output_file: output/architecture.md
+
+implementation_task:
+  description: >
+    Using the architecture produced by the previous task, design the concrete
+    implementation for {project_name}. Provide the key source files or code,
+    function and class responsibilities, validation and error handling, and
+    the commands needed to run it. Ensure every acceptance criterion is
+    addressed and do not invent requirements beyond the project request.
+  expected_output: >
+    A detailed implementation package in markdown containing code or precise
+    code-level changes, setup instructions, and a criterion-by-criterion
+    implementation checklist.
+  agent: senior_developer
+  context:
+    - requirements_task
+    - architecture_task
+  output_file: output/implementation.md
+
+security_task:
+  description: >
+    Review the requirements, architecture, and proposed implementation for
+    security and privacy risks. Perform a lightweight threat model covering
+    trust boundaries, identity, authorization, input validation, secrets,
+    sensitive data, dependencies, logging, abuse cases, and compliance needs.
+    Give concrete remediation guidance that can be applied before release.
+  expected_output: >
+    A prioritized security review in markdown with threats, severity,
+    affected components, mitigations, and security acceptance criteria.
+  agent: security_engineer
+  context:
+    - requirements_task
+    - architecture_task
+    - implementation_task
+  output_file: output/security-review.md
+
+testing_task:
+  description: >
+    Review the original project request, the architecture, and the proposed
+    implementation. Create a focused verification strategy covering happy
+    paths, validation failures, edge cases, security risks, and regression
+    tests. Identify concrete defects or missing requirements before release.
+  expected_output: >
+    A QA report in markdown with prioritized findings, test cases, expected
+    results, automation examples where useful, and a final release verdict.
+  agent: qa_engineer
+  context:
+    - requirements_task
+    - architecture_task
+    - implementation_task
+    - security_task
+  output_file: output/qa-report.md
+
+deployment_task:
+  description: >
+    Prepare the tested and security-reviewed implementation for delivery.
+    Define environments, configuration and secret management, CI/CD stages,
+    infrastructure assumptions, migrations, health checks, observability,
+    deployment strategy, rollback steps, and a production readiness checklist.
+  expected_output: >
+    A production deployment plan in markdown with CI/CD steps, environment
+    configuration, release gates, monitoring, rollback, and runbook actions.
+  agent: devops_engineer
+  context:
+    - architecture_task
+    - implementation_task
+    - security_task
+    - testing_task
+  output_file: output/deployment-plan.md
+
+maintenance_task:
+  description: >
+    Define the post-release operating model for {project_name}. Use the
+    architecture, security review, QA report, and deployment plan to specify
+    service-level objectives, dashboards and alerts, incident response,
+    backup and recovery, dependency upgrades, capacity planning, and the next
+    improvement backlog.
+  expected_output: >
+    A practical operations and maintenance plan in markdown with SLOs,
+    incident procedures, recovery objectives, ownership, and prioritized
+    follow-up work.
+  agent: maintenance_engineer
+  context:
+    - security_task
+    - testing_task
+    - deployment_task
+  output_file: output/maintenance-plan.md
