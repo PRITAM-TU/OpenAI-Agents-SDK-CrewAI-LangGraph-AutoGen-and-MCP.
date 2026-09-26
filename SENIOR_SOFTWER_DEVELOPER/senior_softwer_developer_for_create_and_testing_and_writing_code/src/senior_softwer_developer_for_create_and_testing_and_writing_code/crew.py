@@ -30,6 +30,7 @@ class SeniorSoftwerDeveloperForCreateAndTestingAndWritingCode():
         return Agent(
             config=self.agents_config['software_architect'], # type: ignore[index]
             verbose=True
+            #Here we also add tools 
         )
 
     @agent
