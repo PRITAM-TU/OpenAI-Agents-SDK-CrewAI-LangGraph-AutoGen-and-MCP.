@@ -1,0 +1,5 @@
+1.Here we used checkpointer 
+2. Time travel possible 
+3.playwright is mcp server that used for acees the different tools in crome 
+4.here the concept of Creat_agent is the layers 3 where we write the agent in compact from rather then single single object creation 
+5.All explanation present in video 
